@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
   name: 'app',
@@ -14,13 +15,12 @@ export default {
     }
   },
   created () {
-    fetch(
+    axios.get(
       'https://gist.githubusercontent.com/maciejpi/9911f34b1ed008ebc40059bcbda12d45/raw/f8a666f3d793dd2ee3881150f4b7482bbc8dbd96/buzzword.json'
     )
-      .then(response => response.json())
-      .then(data => {
-        this.buzzwords = data
-      })
+    .then(response => {
+      this.buzzwords = response.data
+    })
   }
 }
 </script>
