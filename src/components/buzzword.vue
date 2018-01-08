@@ -8,15 +8,44 @@
 
     <main>
 
-    </main>
+      <section>
+        "{{ this.randomTerm.word }}" "{{ this.randomTerm.description }}":
+      </section>
 
-    <footer>
-      <p>This website is a glossary of terms for people trying to decipher conversations dominated by business and design jargon.</p>
-    </footer>
+      <button @click="randomise">Another Buzzword</button>
+
+    </main>
 
   </div>
 </template>
 
 <script>
+export default {
+  name: 'buzzword',
+  props: { buzzwords: Array },
+  data () {
+    return {
+      currentWord: null,
+      randomIndex: undefined
+    }
+  },
+  methods: {
+    randomise () {
+      this.randomIndex = Math.floor(Math.random() * this.buzzwords.length)
+    }
+  },
+  computed: {
+    randomTerm () {
+      this.randomIndex = Math.floor(Math.random() * this.buzzwords.length)
+      this.currentWord = Object.assign({}, this.buzzwords[this.randomIndex])
+      return this.currentWord
+    }
+  },
+  watch: {
+    randomTerm () {
+      return this.currentWord
+    }
+  }
 
+}
 </script>
