@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Buzzword</h1>
+    <router-link :to="{ name: 'buzzword' }">Random</router-link>
     <input v-model="search"
            type="text">
     <ul v-if="findTerm.length">

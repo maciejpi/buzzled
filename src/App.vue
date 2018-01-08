@@ -1,14 +1,19 @@
 <template>
   <div id="app">
     <router-view :buzzwords="buzzwords"></router-view>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import footer from './components/footer.vue'
 
 export default {
   name: 'app',
+  components: {
+    'app-footer': footer
+  },
   data () {
     return {
       buzzwords: []
