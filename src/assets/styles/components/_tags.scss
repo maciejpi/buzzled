@@ -1,0 +1,40 @@
+@each $color-name, $value in $tags-color-map {
+  .tag-item.#{$color-name} {
+    background-color: $value;
+  }
+}
+
+.tags-list {
+  margin-top: $spacing * 2;
+
+  @include media($media-large) {
+    &.small {
+      position: absolute;
+      top: $spacing * 3;
+      right: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+.tag-item {
+  font-size: 16px;
+  display: inline-block;
+  padding: $spacing $spacing * 2.5;
+  border-radius: $b-radius;
+  line-height: 1;
+  color: $tags-font-cl;
+
+  &:not(:first-of-type) {
+    margin-left: $spacing;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: $spacing;
+  }
+
+  &.small {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}

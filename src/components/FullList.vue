@@ -1,7 +1,7 @@
 <template>
 
   <main class="main full-list">
-    <div class="search-area">
+    <div class="nav-area">
 
       <ul class="tag-filters">
         <li>
@@ -26,19 +26,17 @@
         </li>
       </ul>
 
-      <div class="search-wrapper">
-        <div class="search-wrapper-inner">
-          <input v-model="search"
-                 type="search"
-                 ref="searchBox"
-                 placeholder="Find a word"
-                 class="search-box">
-          <span @click="resetInput"
-                class="search-icon"></span>
-          <span @click="resetInput"
-                v-show="this.search.length"
-                class="clear-input-icon"></span>
-        </div>
+      <div class="search-box-wrapper">
+        <input v-model="search"
+                type="search"
+                ref="searchBox"
+                placeholder="Find a word"
+                class="search-box">
+        <span @click="resetInput"
+              class="search-icon"></span>
+        <span @click="resetInput"
+              v-show="this.search.length"
+              class="clear-input-icon"></span>
       </div>
     </div>
 

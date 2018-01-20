@@ -1,3 +1,15 @@
-.highlight {
-  background: tomato;
-}
+@import 'variables.scss';
+@import 'mixins.scss';
+@import 'typography.scss';
+
+@import 'structure.scss';
+
+@import 'components/header.scss';
+@import 'components/footer.scss';
+@import 'components/tags.scss';
+@import 'components/tags-filter.scss';
+@import 'components/search-box.scss';
+@import 'components/cta.scss';
+
+@import 'pages/full-list.scss';
+@import 'pages/random-card.scss';

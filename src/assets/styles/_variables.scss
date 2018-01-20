@@ -1,0 +1,32 @@
+$app-font: 'roboto', arial, helvetica, sans-serif;
+
+$white: #fff;
+$blue-main: #455dde;
+$page-bg-cl: #2745b0;
+$grey-light: #dedede;
+$tags-font-cl: #2e2805;
+
+$blue-dark: darken($blue-main, 35%);
+$input-bg: desaturate($page-bg-cl, 15%);
+
+$btn-cl: $blue-main;
+$btn-cl-darker: $blue-dark;
+$input-border-cl: $blue-dark;
+$highlight-cl: $blue-dark;
+
+$spacing: 8px;
+$spacing-large: 32px;
+$spacing-xl: 40px;
+$b-radius: 20px;
+
+// break points
+$page-width: 750px;
+$media-medium: 480px;
+$media-large: 768px;
+
+$tags-color-map: (
+  business: #82f3fa,
+  tech: #fce551,
+  buzzword: #ff7f63,
+  all-tags: $blue-main
+);

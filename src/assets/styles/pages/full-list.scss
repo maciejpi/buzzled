@@ -1,0 +1,50 @@
+.full-list {
+  .keyword {
+    margin-top: $spacing * 2;
+    font: {
+      size: 24px;
+      weight: 300;
+    }
+    @include media($media-large) {
+      margin-top: 0;
+    }
+  }
+
+  .keyword-desc {
+    margin-top: $spacing * 2;
+    line-height: 1.5;
+    font-weight: 400;
+    @include media($media-large) {
+      margin-top: $spacing * 3;
+    }
+  }
+}
+
+.highlight {
+  background-color: $highlight-cl;
+}
+
+.nav-area {
+  @include media($media-large) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.no-result {
+  text-align: center;
+  font-size: 20px;
+  margin-top: $spacing-large;
+}
+
+.keywords-list > li {
+  margin-top: $spacing-large;
+  padding: ($spacing * 3) 0;
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $white;
+  }
+  @include media($media-large) {
+    position: relative;
+  }
+}

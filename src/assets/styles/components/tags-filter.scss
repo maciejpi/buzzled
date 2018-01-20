@@ -1,0 +1,38 @@
+@each $color-name, $value in $tags-color-map {
+  .tag-filters button.#{$color-name} {
+    &.active {
+      background-color: $value;
+      border-color: transparent;
+      &:not(.all-tags) {
+        font-weight: 400;
+        color: $tags-font-cl;
+      }
+    }
+  }
+}
+
+.tag-filters {
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  button {
+    font-size: 15px;
+    cursor: pointer;
+    background-color: transparent;
+    padding: $spacing / 2 $spacing * 2;
+    border: 1px solid $white {
+      radius: $b-radius;
+    }
+  }
+  @include media($media-medium) {
+    button {
+      font-size: 18px;
+    }
+  }
+  @include media($media-large) {
+    margin: 0;
+    width: 400px;
+  }
+}

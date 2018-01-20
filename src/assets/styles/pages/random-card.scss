@@ -1,0 +1,47 @@
+.card {
+  .keyword {
+    font: {
+      size: 28px;
+      weight: 400;
+    }
+    @include media($media-large) {
+      font-size: 40px;
+    }
+  }
+
+  .keyword-desc {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-top: $spacing * 3;
+    max-width: 640px;
+    margin: {
+      top: $spacing * 2;
+      right: auto;
+      bottom: 0;
+      left: auto;
+    }
+    @include media($media-large) {
+      font-size: 24px;
+    }
+  }
+}
+
+.term-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 400px;
+  border-top: 1px solid $white;
+  padding: {
+    top: $spacing-large;
+    right: $spacing;
+    bottom: $spacing * 3;
+    left: $spacing;
+  }
+  @include media($media-large) {
+    height: 340px;
+    padding: $spacing-large {
+      bottom: $spacing * 3;
+    }
+  }
+}

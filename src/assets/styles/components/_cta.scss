@@ -1,0 +1,32 @@
+.cta {
+  cursor: pointer;
+  background-color: $btn-cl;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  box-shadow: 0 4px 0 0 $btn-cl-darker;
+  margin: {
+    top: $spacing-large;
+    right: auto;
+    left: auto;
+  }
+  font: {
+    size: 18px;
+  }
+  padding: {
+    top: $spacing * 2.5;
+    right: $spacing-xl;
+    bottom: $spacing * 2;
+    left: $spacing-xl;
+  }
+  border: 0 {
+    radius: $b-radius / 2;
+  }
+
+  @include media($media-large) {
+    margin-top: $spacing-xl;
+    &:hover {
+      background-color: $btn-cl-darker;
+    }
+  }
+}

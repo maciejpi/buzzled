@@ -1,0 +1,18 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: $spacing-large;
+
+  a {
+    font-size: 16px;
+  }
+
+  @include media($media-large) {
+    margin-top: $spacing-large * 1.5;
+
+    a {
+      font-size: 18px;
+    }
+  }
+}

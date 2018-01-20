@@ -1,0 +1,22 @@
+.footer {
+  text-align: center;
+  margin-top: $spacing-xl * 3;
+}
+
+.footer-inner {
+  border-top: 1px solid $white;
+  padding: {
+    top: $spacing * 2;
+    bottom: $spacing-large * 2;
+  }
+  p {
+    line-height: 1.5;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+  span {
+    margin-right: 3px;
+  }
+}
