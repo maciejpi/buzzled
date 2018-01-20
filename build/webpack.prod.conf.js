@@ -119,7 +119,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
 
     new GoogleFontsPlugin({
-      fonts: [{ family: 'Roboto', variants: ['400'] }]
+      fonts: [{ family: 'Roboto', variants: ['300', '400', '700'] }]
     })
   ]
 })
