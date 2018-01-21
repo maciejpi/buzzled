@@ -4,25 +4,10 @@
     <div class="nav-area">
 
       <ul class="tag-filters">
-        <li>
-          <button @click="filterTag('')"
-                  :class="{ active: this.filterName === '' }"
-                  class="all-tags">All</button>
-        </li>
-        <li>
-          <button @click="filterTag('Business')"
-                  :class="{ active: this.filterName === 'Business' }"
-                  class="business">Business</button>
-        </li>
-        <li>
-          <button @click="filterTag('Tech')"
-                  :class="{ active: this.filterName === 'Tech' }"
-                  class="tech">Tech</button>
-        </li>
-        <li>
-          <button @click="filterTag('Buzzword')"
-                  :class="{ active: this.filterName === 'Buzzword' }"
-                  class="buzzword">Buzzword</button>
+        <li v-for="filter in filterNames" :key="filter">
+          <button @click="filterTag(filter)"
+                  :class="[filter.toLowerCase(), { active: filterName === filter }]"
+                  >{{ filter }}</button>
         </li>
       </ul>
 
@@ -40,9 +25,9 @@
       </div>
     </div>
 
-    <ul v-if="filteredWord.length"
+    <ul v-if="filteredWords.length"
         class="keywords-list">
-      <li v-for="(term, index) in filteredWord"
+      <li v-for="(term, index) in filteredWords"
           :key="index">
 
         <h2 v-html="highlight(term.gsx$title.$t)"
@@ -76,7 +61,8 @@ export default {
   data () {
     return {
       search: '',
-      filterName: ''
+      filterName: '',
+      filterNames: ['All', 'Business', 'Tech', 'Buzzword']
     }
   },
   methods: {
@@ -95,20 +81,22 @@ export default {
     }
   },
   computed: {
-    filteredWord () {
+    filteredWords () {
       return this.words.filter(term => {
         const searchInputFilter = this.search.length
           ? term.gsx$title.$t.toLowerCase().includes(this.search.toLowerCase())
           : this.words
 
-        if (this.filterName) {
+        if (this.filterName && this.filterName !== 'All') {
           return term.gsx$tags.$t.split(', ').some(tag => {
             if (tag === this.filterName) {
               return searchInputFilter
             }
           })
+        } else {
+          this.filterName = 'All'
+          return searchInputFilter
         }
-        return searchInputFilter
       })
     }
   }

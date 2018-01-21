@@ -3,7 +3,7 @@
     &.active {
       background-color: $value;
       border-color: transparent;
-      &:not(.all-tags) {
+      &:not(.all) {
         font-weight: 400;
         color: $tags-font-cl;
       }
