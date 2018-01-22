@@ -10,6 +10,12 @@
   background-color: $page-bg-cl;
 }
 
+.main,
+.is-loading,
+.app-error {
+  flex: 1 0 auto;
+}
+
 .app-header,
 .main,
 .footer {
@@ -22,9 +28,24 @@
 }
 
 .main {
-  flex: 1 0 auto;
-  margin-top: $spacing-xl;
+  margin-top: $spacing-large;
   @include media($media-large) {
-    margin-top: $spacing-large * 3;
+    margin-top: $spacing-large * 1.5;
   }
+}
+
+.is-loading {
+  img {
+    margin-top: 25vh;
+  }
+}
+
+.app-error {
+  text-align: center;
+  font-size: 20px;
+  padding: {
+    left: $spacing;
+    right: $spacing;
+  }
+  margin-top: 25vh;
 }

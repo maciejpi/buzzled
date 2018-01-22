@@ -6,7 +6,6 @@
   display: block;
   box-shadow: 0 4px 0 0 $btn-cl-darker;
   margin: {
-    top: $spacing-large;
     right: auto;
     left: auto;
   }
@@ -24,7 +23,6 @@
   }
 
   @include media($media-large) {
-    margin-top: $spacing-xl;
     &:hover {
       background-color: $btn-cl-darker;
     }

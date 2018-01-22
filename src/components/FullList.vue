@@ -31,7 +31,7 @@
           :key="index">
 
         <h2 v-html="highlight(term.gsx$title.$t)"
-            class="keyword">{{ term.tag }}</h2>
+            class="keyword"></h2>
         <p class="keyword-desc">{{ term.gsx$description.$t }}</p>
 
         <ul class="tags-list small">
