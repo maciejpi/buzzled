@@ -2,9 +2,7 @@
 
   <main class="main card">
 
-    <section v-if="this.randomTerm.gsx$title"
-             class="term-wrapper">
-
+    <section class="term-wrapper">
       <div>
         <h2 class="keyword">{{ this.randomTerm.gsx$title.$t }} </h2>
         <p class="keyword-desc">{{ this.randomTerm.gsx$description.$t }}</p>
@@ -17,7 +15,6 @@
             class="tag-item">{{ tag }}
         </li>
       </ul>
-
     </section>
 
     <button @click="randomise"
@@ -36,6 +33,7 @@ export default {
   data () {
     return {
       currentWord: {},
+      initialWord: 'Lean product development',
       randomIndex: undefined
     }
   },
@@ -46,14 +44,17 @@ export default {
   },
   computed: {
     randomTerm () {
-      this.randomise()
+      this.randomIndex === undefined
+        ? (this.randomIndex = this.initialWordIndex)
+        : this.randomise()
+
       this.currentWord = Object.assign({}, this.words[this.randomIndex])
       return this.currentWord
-    }
-  },
-  watch: {
-    randomTerm () {
-      return this.currentWord
+    },
+    initialWordIndex () {
+      return this.words.findIndex(
+        word => word.gsx$title.$t === this.initialWord
+      )
     }
   }
 }

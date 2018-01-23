@@ -87,14 +87,14 @@ export default {
           ? term.gsx$title.$t.toLowerCase().includes(this.search.toLowerCase())
           : this.words
 
-        if (this.filterName && this.filterName !== 'All') {
+        if (this.filterName && this.filterName !== this.filterNames[0]) {
           return term.gsx$tags.$t.split(', ').some(tag => {
             if (tag === this.filterName) {
               return searchInputFilter
             }
           })
         } else {
-          this.filterName = 'All'
+          this.filterName = this.filterNames[0]
           return searchInputFilter
         }
       })
