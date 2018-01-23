@@ -35,6 +35,15 @@ export default {
       error: false
     }
   },
+  methods: {
+    sortWords (words) {
+      return words.sort((a, b) => {
+        const wordA = a.gsx$title.$t.toLowerCase()
+        const wordB = b.gsx$title.$t.toLowerCase()
+        return wordA < wordB ? -1 : wordA > wordB ? 1 : 0
+      })
+    }
+  },
   created () {
     this.isLoading = true
     axios
@@ -44,7 +53,7 @@ export default {
       .then(
         response => {
           this.isLoading = false
-        this.words = response.data.feed.entry
+          this.words = this.sortWords(response.data.feed.entry)
         },
         error => {
           this.isLoading = false

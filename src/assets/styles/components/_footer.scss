@@ -1,6 +1,9 @@
 .footer {
   text-align: center;
-  margin-top: $spacing-xl * 3;
+  margin-top: $spacing-large * 2;
+  @include media($media-large) {
+    margin-top: $spacing-large;
+  }
 }
 
 .footer-inner {
