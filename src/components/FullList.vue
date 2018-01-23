@@ -35,7 +35,7 @@
         <p class="keyword-desc">{{ term.gsx$description.$t }}</p>
 
         <ul class="tags-list small">
-          <li v-for="(tag, index) in term.gsx$tags.$t.split(', ')"
+          <li v-for="(tag, index) in term.gsx$tags.$t.split(tagsSplitPattern)"
               :key="index"
               :class="tagClass(tag)"
               class="tag-item small">{{tag}}</li>
@@ -57,7 +57,7 @@ import { tagsClass } from '../helpers/mixins'
 export default {
   name: 'fullList',
   mixins: [tagsClass],
-  props: { words: Array },
+  props: ['words', 'tagsSplitPattern'],
   data () {
     return {
       search: '',
@@ -69,7 +69,7 @@ export default {
     highlight (word) {
       const regex = new RegExp(this.search, 'gi')
       return this.search.length
-        ? word.replace(regex, `<span class="highlight">${this.search}</span>`)
+        ? word.replace(regex, str => `<span class="highlight">${str}</span>`)
         : word
     },
     filterTag (name) {
@@ -88,7 +88,7 @@ export default {
           : this.words
 
         if (this.filterName && this.filterName !== this.filterNames[0]) {
-          return term.gsx$tags.$t.split(', ').some(tag => {
+          return term.gsx$tags.$t.split(this.tagsSplitPattern).some(tag => {
             if (tag === this.filterName) {
               return searchInputFilter
             }

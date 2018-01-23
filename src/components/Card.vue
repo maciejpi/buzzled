@@ -9,7 +9,7 @@
       </div>
 
       <ul class="tags-list">
-        <li v-for="(tag, index) in this.randomTerm.gsx$tags.$t.split(', ')"
+        <li v-for="(tag, index) in this.randomTerm.gsx$tags.$t.split(this.tagsSplitPattern)"
             :key="index"
             :class="tagClass(tag)"
             class="tag-item">{{ tag }}
@@ -29,7 +29,7 @@ import { tagsClass } from '../helpers/mixins'
 
 export default {
   name: 'card',
-  props: { words: Array },
+  props: ['words', 'tagsSplitPattern'],
   mixins: [tagsClass],
   data () {
     return {

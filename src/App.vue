@@ -11,7 +11,7 @@
     <div v-else-if="error" class="app-error">Something went wrong. Please try refreshing the page.</div>
 
     <keep-alive v-else>
-      <router-view :words="words"></router-view>
+      <router-view :words="words" :tagsSplitPattern="tagsSplitPattern"></router-view>
     </keep-alive>
 
     <app-footer></app-footer>
@@ -34,7 +34,8 @@ export default {
     return {
       words: [],
       isLoading: false,
-      error: false
+      error: false,
+      tagsSplitPattern: /\s+|[,|;|.]\s*/
     }
   },
   methods: {
