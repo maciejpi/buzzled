@@ -34,12 +34,12 @@
   }
 }
 
-.is-loading {
-  img {
-    margin-top: 25vh;
-  }
+.app-error,
+.is-loading img {
+  margin-top: 25vh;
 }
 
+.no-result,
 .app-error {
   text-align: center;
   font-size: 20px;
@@ -47,5 +47,11 @@
     left: $spacing;
     right: $spacing;
   }
-  margin-top: 25vh;
+}
+
+.no-result {
+  margin-top: 15vh;
+  @include media($media-large) {
+    margin-top: 25vh;
+  }
 }
