@@ -1,0 +1,20 @@
+.intro {
+  text-align: center;
+  font-size: 18px;
+
+  .intro-msg {
+    margin: auto {
+      top: $spacing-large;
+    }
+    line-height: 1.4;
+    max-width: 640px;
+  }
+
+  @include media($media-large) {
+    font-size: 24px;
+
+    .intro-msg {
+      margin-top: $spacing-large * 1.5;
+    }
+  }
+}

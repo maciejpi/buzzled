@@ -5,6 +5,7 @@ $blue-main: #455dde;
 $page-bg-cl: #2745b0;
 $grey-light: #dedede;
 $tags-font-cl: #2e2805;
+$yellow: #fce551;
 
 $blue-dark: darken($blue-main, 35%);
 $input-bg: desaturate($page-bg-cl, 15%);
@@ -26,7 +27,7 @@ $media-large: 768px;
 
 $tags-color-map: (
   business: #82f3fa,
-  tech: #fce551,
+  tech: $yellow,
   buzzword: #ff7f63,
   all: $blue-main
 );

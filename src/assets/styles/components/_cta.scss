@@ -22,9 +22,17 @@
     radius: $b-radius / 2;
   }
 
+  .intro & {
+    margin-top: $spacing-xl;
+  }
+
   @include media($media-large) {
     &:hover {
       background-color: $btn-cl-darker;
+    }
+
+    .intro & {
+      margin-top: $spacing-xl * 2;
     }
   }
 }

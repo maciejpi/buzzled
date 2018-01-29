@@ -1,6 +1,7 @@
 .footer {
   text-align: center;
   margin-top: $spacing-large * 2;
+
   @include media($media-large) {
     margin-top: $spacing-large;
   }
@@ -9,17 +10,7 @@
 .footer-inner {
   border-top: 1px solid $white;
   padding: {
-    top: $spacing * 2;
+    top: $spacing-large;
     bottom: $spacing-large * 2;
-  }
-  p {
-    line-height: 1.5;
-    margin: {
-      left: auto;
-      right: auto;
-    }
-  }
-  span {
-    margin-right: 3px;
   }
 }

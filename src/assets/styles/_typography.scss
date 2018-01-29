@@ -56,6 +56,12 @@ h1 {
     size: 24px;
     weight: 700;
   }
+  .intro-header & {
+    font: {
+      size: 40px;
+      weight: 400;
+    }
+  }
 }
 
 h2 {

@@ -1,8 +1,22 @@
+.intro-header {
+  margin-top: $spacing-xl;
+
+  @include media($media-large) {
+    margin-top: $spacing-xl * 3;
+  }
+}
+
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   margin-top: $spacing-large;
+
+  .app-title-link {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   a {
     font-size: 16px;
