@@ -11,6 +11,12 @@
   border-top: 1px solid $white;
   padding: {
     top: $spacing-large;
-    bottom: $spacing-large * 2;
+    bottom: $spacing-large;
+  }
+  @include media($media-large) {
+    padding: {
+      top: $spacing-large * 1.5;
+      bottom: $spacing-large * 1.5;
+    }
   }
 }

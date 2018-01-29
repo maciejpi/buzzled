@@ -10,7 +10,7 @@
                  class="app-title-link">Buzzled</router-link>
 
     <router-link v-if="isOnRandomCardPage()"
-                :to="{ name: 'card' }">Show random words</router-link>
+                :to="{ name: 'card' }">Show cards</router-link>
     <router-link v-else
                  :to="{ name: 'fullList' }">Show list</router-link>
   </header>

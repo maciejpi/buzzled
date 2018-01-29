@@ -12,7 +12,6 @@
 
   .keyword-desc {
     margin-top: $spacing * 2;
-    line-height: 1.5;
     font-weight: 400;
     @include media($media-large) {
       margin-top: $spacing * 3;

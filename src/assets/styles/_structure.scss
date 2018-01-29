@@ -60,20 +60,12 @@
   }
 }
 
-.no-result,
 .app-error {
   text-align: center;
   font-size: 20px;
   padding: {
     left: $spacing;
     right: $spacing;
-  }
-}
-
-.no-result {
-  margin-top: 15vh;
-  @include media($media-large) {
-    margin-top: 25vh;
   }
 }
 
