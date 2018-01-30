@@ -12,7 +12,7 @@
   .keyword-desc {
     font-size: 18px;
     margin-top: $spacing * 3;
-    max-width: 640px;
+    max-width: $paragraph-width;
     margin: {
       top: $spacing * 2;
       right: auto;

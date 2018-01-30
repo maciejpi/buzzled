@@ -17,10 +17,12 @@
                 ref="searchBox"
                 placeholder="Find a word"
                 class="search-box">
-        <span @click="resetInput"
+
+        <span @click="enterInput"
               class="search-icon"></span>
-        <span @click="resetInput"
-              v-show="this.search.length"
+
+        <span v-show="this.search.length"
+              @click="resetInput"
               class="clear-input-icon"></span>
       </div>
     </div>
@@ -49,7 +51,8 @@
       <p class="emoticon">O.o</p>
       <p>OK, without using fancy words: Sorry, we don’t have this word in our list. But to compensate here’s a winning buzzword: "to leverage", which in most cases can be simply replaced by "to use".</p>
       <p>
-        <router-link :to="{ name: 'fullList' }">Back to full list</router-link>
+        <button @click="resetInput"
+                class="link">Back to full list</button>
       </p>
     </div>
 
@@ -83,6 +86,9 @@ export default {
     },
     resetInput () {
       this.search = ''
+      this.enterInput()
+    },
+    enterInput () {
       this.$refs.searchBox.focus()
     }
   },

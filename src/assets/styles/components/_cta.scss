@@ -1,10 +1,10 @@
 .cta {
-  cursor: pointer;
   background-color: $btn-cl;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   display: block;
   box-shadow: 0 4px 0 0 $btn-cl-darker;
+  border-radius: $b-radius / 2;
   margin: {
     right: auto;
     left: auto;
@@ -17,9 +17,6 @@
     right: $spacing-xl;
     bottom: $spacing * 2;
     left: $spacing-xl;
-  }
-  border: 0 {
-    radius: $b-radius / 2;
   }
 
   .intro & {

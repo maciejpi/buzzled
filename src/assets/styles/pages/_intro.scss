@@ -3,11 +3,10 @@
   font-size: 18px;
 
   .intro-msg {
+    max-width: $paragraph-width;
     margin: auto {
       top: $spacing-large;
     }
-    line-height: 1.4;
-    max-width: 640px;
   }
 
   @include media($media-large) {
