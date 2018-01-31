@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { tagsClass } from '../helpers/mixins'
+import { tagsClass } from '../utils/mixins'
 
 export default {
   name: 'fullList',
