@@ -7,11 +7,10 @@ $grey-light: #dedede;
 $tags-font-cl: #2e2805;
 $yellow: #fce551;
 
+$blue-medium: darken($blue-main, 5%);
 $blue-dark: darken($blue-main, 35%);
 $input-bg: desaturate($page-bg-cl, 15%);
 
-$btn-cl: $blue-main;
-$btn-cl-darker: $blue-dark;
 $input-border-cl: $blue-dark;
 $highlight-cl: $blue-dark;
 

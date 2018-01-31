@@ -8,6 +8,8 @@
   margin-top: $spacing * 2;
 
   @include media($media-large) {
+    margin-top: $spacing-large;
+
     &.small {
       position: absolute;
       top: $spacing * 3;

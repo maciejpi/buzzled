@@ -47,9 +47,9 @@
     </ul>
 
     <div v-else class="no-result">
-      <p>Apologies, we haven’t found an outcome for your query.</p>
       <p class="emoticon">O.o</p>
-      <p>OK, without using fancy words: Sorry, we don’t have this word in our list. But to compensate here’s a winning buzzword: "to leverage", which in most cases can be simply replaced by "to use".</p>
+      <p>We don’t have this word in our list. But to compensate here’s a winning buzzword:
+      <br>"to leverage", which in most cases can be simply replaced by "to use".</p>
       <p>
         <button @click="resetInput"
                 class="link">Back to full list</button>

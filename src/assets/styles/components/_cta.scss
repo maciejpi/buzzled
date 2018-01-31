@@ -1,9 +1,9 @@
 .cta {
-  background-color: $btn-cl;
+  background-color: $blue-main;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   display: block;
-  box-shadow: 0 4px 0 0 $btn-cl-darker;
+  box-shadow: 0 4px 0 0 $blue-dark;
   border-radius: $b-radius / 2;
   margin: {
     right: auto;
@@ -25,7 +25,7 @@
 
   @include media($media-large) {
     &:hover {
-      background-color: $btn-cl-darker;
+      background-color: $blue-medium;
     }
 
     .intro & {

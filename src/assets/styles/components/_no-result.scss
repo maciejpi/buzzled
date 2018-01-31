@@ -9,9 +9,6 @@
 
   p {
     margin-top: $spacing * 3;
-    &:first-of-type {
-      font-style: italic;
-    }
   }
 
   @include media($media-large) {
