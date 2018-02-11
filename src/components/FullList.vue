@@ -4,19 +4,19 @@
     <div class="nav-area">
 
       <ul class="tag-filters">
-        <li v-for="filter in filterNames" :key="filter">
+        <li v-for="filter in filterNames"
+            :key="filter">
           <button @click="filterTag(filter)"
-                  :class="[filter.toLowerCase(), { active: filterName === filter }]"
-                  >{{ filter }}</button>
+                  :class="[filter.toLowerCase(), { active: filterName === filter }]">{{ filter }}</button>
         </li>
       </ul>
 
       <div class="search-box-wrapper">
         <input v-model="search"
-                type="search"
-                ref="searchBox"
-                placeholder="Find a word"
-                class="search-box">
+               type="search"
+               ref="searchBox"
+               placeholder="Find a word"
+               class="search-box">
 
         <span @click="enterInput"
               class="search-icon"></span>
@@ -46,10 +46,11 @@
       </li>
     </ul>
 
-    <div v-else class="no-result">
+    <div v-else
+         class="no-result">
       <p class="emoticon">O.o</p>
       <p>We don’t have this word in our list. But to compensate here’s a winning buzzword:
-      <br>"to leverage", which in most cases can be simply replaced by "to use".</p>
+        <br>"to leverage", which in most cases can be simply replaced by "to use".</p>
       <p>
         <button @click="resetInput"
                 class="link">Back to full list</button>
@@ -61,12 +62,14 @@
 </template>
 
 <script>
-import { tagsClass } from '../utils/mixins'
+import { tagsClass } from '@/utils/mixins'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'fullList',
+
   mixins: [tagsClass],
-  props: ['words', 'tagsSplitPattern'],
+
   data () {
     return {
       search: '',
@@ -74,6 +77,7 @@ export default {
       filterNames: ['All', 'Business', 'Tech', 'Buzzword']
     }
   },
+
   methods: {
     highlight (word) {
       const regex = new RegExp(this.search, 'gi')
@@ -92,7 +96,15 @@ export default {
       this.$refs.searchBox.focus()
     }
   },
+
   computed: {
+    ...mapState({
+      tagsSplitPattern: state => state.tagsSplitPattern
+    }),
+    ...mapGetters({
+      words: 'sortedWords'
+    }),
+
     filteredWords () {
       return this.words.filter(term => {
         const searchInputFilter = this.search.length
@@ -100,11 +112,13 @@ export default {
           : this.words
 
         if (this.filterName && this.filterName !== this.filterNames[0]) {
-          return term.gsx$tags.$t.split(this.tagsSplitPattern).some(tag => {
-            if (tag === this.filterName) {
-              return searchInputFilter
-            }
-          })
+          return term.gsx$tags.$t
+            .split(this.tagsSplitPattern)
+            .some(tag => {
+              if (tag === this.filterName) {
+                return searchInputFilter
+              }
+            })
         } else {
           this.filterName = this.filterNames[0]
           return searchInputFilter

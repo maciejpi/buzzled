@@ -25,12 +25,14 @@
 </template>
 
 <script>
-import { tagsClass } from '../utils/mixins'
+import { tagsClass } from '@/utils/mixins'
+import { mapState } from 'vuex'
 
 export default {
   name: 'card',
-  props: ['words', 'tagsSplitPattern'],
+
   mixins: [tagsClass],
+
   data () {
     return {
       currentWord: {},
@@ -43,13 +45,18 @@ export default {
       this.randomIndex = Math.floor(Math.random() * this.words.length)
     }
   },
+
   computed: {
+    ...mapState({
+      tagsSplitPattern: state => state.tagsSplitPattern,
+      words: state => state.words
+    }),
     randomTerm () {
       this.randomIndex === undefined
         ? (this.randomIndex = this.initialWordIndex)
         : this.randomise()
 
-      this.currentWord = Object.assign({}, this.words[this.randomIndex])
+      this.currentWord = {...this.words[this.randomIndex]}
       return this.currentWord
     },
     initialWordIndex () {
