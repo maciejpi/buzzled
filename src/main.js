@@ -4,11 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import { sync } from 'vuex-router-sync'
 
 import 'normalize.css'
 import './assets/styles/main.scss'
 
 Vue.config.productionTip = false
+
+sync(store, router)
 
 /* eslint-disable no-new */
 new Vue({

@@ -12,7 +12,7 @@
                  class="app-title-link">Buzzled</router-link>
 
     <router-link v-if="isOnRandomCardPage()"
-                 :to="{ name: 'card' }">Show cards</router-link>
+                 :to="{ name: 'card', params: { id: currentWordRoute } }">Show cards</router-link>
     <router-link v-else
                  :to="{ name: 'fullList' }">Show list</router-link>
   </header>
@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { transformWord } from '@/utils/helpers'
+
 export default {
   name: 'appHeader',
 
@@ -29,6 +32,17 @@ export default {
     },
     isOnRandomCardPage () {
       return this.$route.name === 'fullList'
+    }
+  },
+
+  computed: {
+    ...mapState({
+      currentWord: state => state.card.currentWord
+    }),
+    currentWordRoute () {
+      if (this.currentWord.gsx$title) {
+        return transformWord(this.currentWord.gsx$title.$t)
+      }
     }
   }
 }

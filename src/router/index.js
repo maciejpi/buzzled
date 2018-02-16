@@ -16,8 +16,9 @@ export default new Router({
       name: 'content',
       redirect: { name: 'card' },
       component: AppContent,
+
       children: [
-        { path: '/card', name: 'card', component: Card },
+        { path: '/card/:id', name: 'card', component: Card },
         { path: '/fullList', name: 'fullList', component: FullList }
       ]
     },

@@ -5,3 +5,11 @@ export const sortWords = words => {
     return wordA < wordB ? -1 : wordA > wordB ? 1 : 0
   })
 }
+
+export const transformWord = word => {
+  return word
+    .toLowerCase()
+    .split(' ')
+    .join('-')
+    .replace(/[(|)]/g, '')
+}
