@@ -5,7 +5,8 @@ export default {
   state: {
     currentIndex: undefined,
     lastIndex: undefined,
-    currentWord: {}
+    currentWord: {},
+    wordsInMemory: 0
   },
 
   getters: {
@@ -23,7 +24,9 @@ export default {
     wordIndex (state, getters) {
       return getters.urlWordIndex >= 0
         ? getters.urlWordIndex
-        : getters.defaultWordIndex
+        : state.lastIndex === undefined
+          ? getters.defaultWordIndex
+          : state.currentIndex
     }
   },
 
@@ -39,6 +42,15 @@ export default {
     },
     setLastIndex (state, index) {
       state.lastIndex = index
+    },
+    addWordToMemory (state) {
+      state.wordsInMemory++
+    },
+    removeWordFromMemory (state) {
+      state.wordsInMemory--
+    },
+    resetMemory (state) {
+      state.wordsInMemory = 1
     }
   },
 
@@ -46,7 +58,6 @@ export default {
     findRandomTerm ({ state, getters, commit, rootState }) {
       if (state.currentIndex === undefined) {
         commit('updateIndex', getters.wordIndex)
-        commit('setLastIndex', getters.wordIndex + 1)
       } else {
         commit('setLastIndex', state.currentIndex)
         while (state.currentIndex === state.lastIndex) {
@@ -54,6 +65,7 @@ export default {
         }
       }
       commit('setCurrentWord', rootState.words[state.currentIndex])
+      commit('addWordToMemory')
 
       router.push({
         name: 'card',
@@ -62,11 +74,14 @@ export default {
         }
       })
     },
-    navigateToWord ({ state, getters, commit, rootState }) {
-      if (
-        rootState.route.name === 'card' &&
-        state.currentIndex !== getters.wordIndex
-      ) {
+    removeWordFromMemory ({ commit }) {
+      commit('removeWordFromMemory')
+    },
+    resetMemory ({ commit }) {
+      commit('resetMemory')
+    },
+    updateWord ({ state, getters, commit, rootState }) {
+      if (state.currentIndex !== getters.wordIndex) {
         commit('updateIndex', getters.wordIndex)
         commit('setCurrentWord', rootState.words[state.currentIndex])
       }

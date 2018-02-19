@@ -17,8 +17,13 @@
       </ul>
     </section>
 
-    <button @click="findRandomTerm"
-            class="cta">Buzzle me again</button>
+    <div class="buttons-wrapper">
+      <button @click="goBack"
+              class="action-btn back"
+              :class="{ hidden: this.wordsInMemory <= 1 }"></button>
+      <button @click="findRandomTerm"
+              class="action-btn cta">Buzzle me again</button>
+    </div>
 
   </main>
 
@@ -36,20 +41,27 @@ export default {
   methods: {
     ...mapActions({
       findRandomTerm: 'findRandomTerm',
-      navigateToWord: 'navigateToWord'
-    })
+      updateWord: 'updateWord',
+      removeWordFromMemory: 'removeWordFromMemory',
+      resetMemory: 'resetMemory'
+    }),
+    goBack () {
+      this.$router.go(-1)
+      this.removeWordFromMemory()
+    }
   },
 
   computed: {
     ...mapState({
       tagsSplitPattern: state => state.tagsSplitPattern,
-      currentWord: state => state.card.currentWord
+      currentWord: state => state.card.currentWord,
+      wordsInMemory: state => state.card.wordsInMemory
     })
   },
 
   watch: {
     $route (to, from) {
-      this.navigateToWord()
+      from.name === 'card' ? this.updateWord() : this.resetMemory()
     }
   },
 

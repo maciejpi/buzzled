@@ -1,0 +1,80 @@
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: {
+    left: $spacing;
+    right: $spacing;
+  }
+  @include media($media-medium) {
+    position: relative;
+    justify-content: center;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+}
+
+.action-btn {
+  background-color: $blue-main;
+  box-shadow: 0 4px 0 0 $blue-dark;
+  border-radius: $b-radius / 2;
+  display: inline-block;
+
+  @include media($media-large) {
+    &:hover {
+      background-color: $blue-medium;
+    }
+  }
+}
+
+.cta {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font: {
+    size: 18px;
+  }
+  padding: {
+    top: $spacing * 2.5;
+    right: $spacing-large;
+    bottom: $spacing * 2;
+    left: $spacing-large;
+  }
+
+  .intro & {
+    margin: {
+      top: $spacing-xl;
+      right: auto;
+      left: auto;
+    }
+  }
+
+  @include media($media-large) {
+    .intro & {
+      margin-top: $spacing-xl * 2;
+    }
+  }
+}
+
+.back {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 28px;
+  &::before {
+    content: url('../icons/arrow-left.svg');
+    position: absolute;
+    top: 5px;
+  }
+  &.hidden {
+    display: none;
+  }
+
+  @include media($media-medium) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}

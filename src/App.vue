@@ -4,7 +4,9 @@
 
     <app-header></app-header>
 
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
 
     <app-footer></app-footer>
 
