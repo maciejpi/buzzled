@@ -3,13 +3,7 @@
   <main class="main full-list">
     <div class="nav-area">
 
-      <ul class="tag-filters">
-        <li v-for="filter in filterNames"
-            :key="filter">
-          <button @click="filterTag(filter)"
-                  :class="[filter.toLowerCase(), { active: filterName === filter }]">{{ filter }}</button>
-        </li>
-      </ul>
+      <filters></filters>
 
       <div class="search-box-wrapper">
         <input v-model="search"
@@ -63,34 +57,38 @@
 
 <script>
 import { tagsClass } from '@/utils/mixins'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
+import Filters from './Filters.vue'
 
 export default {
   name: 'fullList',
+
+  components: {
+    'filters': Filters
+  },
 
   mixins: [tagsClass],
 
   data () {
     return {
-      search: '',
-      filterName: '',
-      filterNames: ['All', 'Business', 'Tech', 'Buzzword']
+      search: ''
     }
   },
 
   methods: {
+    ...mapActions([
+      'resetTags'
+    ]),
     highlight (word) {
       const regex = new RegExp(this.search, 'gi')
       return this.search.length
         ? word.replace(regex, str => `<span class="highlight">${str}</span>`)
         : word
     },
-    filterTag (name) {
-      this.filterName = name
-    },
     resetInput () {
       this.search = ''
       this.enterInput()
+      this.resetTags()
     },
     enterInput () {
       this.$refs.searchBox.focus()
@@ -99,7 +97,8 @@ export default {
 
   computed: {
     ...mapState({
-      tagsSplitPattern: state => state.tagsSplitPattern
+      tagsSplitPattern: state => state.tagsSplitPattern,
+      filterName: state => state.filters.filterName
     }),
     ...mapGetters({
       words: 'sortedWords'
@@ -111,7 +110,7 @@ export default {
           ? term.gsx$title.$t.toLowerCase().includes(this.search.toLowerCase())
           : this.words
 
-        if (this.filterName && this.filterName !== this.filterNames[0]) {
+        if (this.filterName) {
           return term.gsx$tags.$t
             .split(this.tagsSplitPattern)
             .some(tag => {
@@ -120,7 +119,6 @@ export default {
               }
             })
         } else {
-          this.filterName = this.filterNames[0]
           return searchInputFilter
         }
       })
