@@ -5,7 +5,7 @@ export default {
 
   getters: {
     sortedWords (state, getters, rootState) {
-      return sortWords(rootState.words)
+      return sortWords(rootState.appStatus.words)
     }
   },
 

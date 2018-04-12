@@ -11,13 +11,13 @@ export default {
 
   getters: {
     urlWordIndex (state, getters, rootState) {
-      return rootState.words.findIndex(
+      return rootState.appStatus.words.findIndex(
         word => transformWord(word.gsx$title.$t) === rootState.route.params.id
       )
     },
     defaultWordIndex (state, getters, rootState) {
       const defaultWord = 'Lean product development'
-      return rootState.words.findIndex(
+      return rootState.appStatus.words.findIndex(
         word => word.gsx$title.$t === defaultWord
       )
     },
@@ -61,10 +61,10 @@ export default {
       } else {
         commit('setLastIndex', state.currentIndex)
         while (state.currentIndex === state.lastIndex) {
-          commit('randomiseIndex', rootState.words.length)
+          commit('randomiseIndex', rootState.appStatus.words.length)
         }
       }
-      commit('setCurrentWord', rootState.words[state.currentIndex])
+      commit('setCurrentWord', rootState.appStatus.words[state.currentIndex])
       commit('addWordToMemory')
 
       router.push({
@@ -83,7 +83,7 @@ export default {
     updateWord ({ state, getters, commit, rootState }) {
       if (state.currentIndex !== getters.wordIndex) {
         commit('updateIndex', getters.wordIndex)
-        commit('setCurrentWord', rootState.words[state.currentIndex])
+        commit('setCurrentWord', rootState.appStatus.words[state.currentIndex])
       }
     }
   }

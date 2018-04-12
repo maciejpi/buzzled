@@ -1,11 +1,17 @@
 import axios from 'axios'
 
 export default {
-  state: {},
+  state: {
+    words: []
+  },
 
   getters: {},
 
-  mutations: {},
+  mutations: {
+    setWords (state, words) {
+      state.words = words
+    }
+  },
 
   actions: {
     fetchWords ({ commit }) {

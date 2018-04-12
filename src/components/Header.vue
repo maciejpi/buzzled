@@ -40,9 +40,10 @@ export default {
       currentWord: state => state.card.currentWord
     }),
     currentWordRoute () {
-      if (this.currentWord.gsx$title) {
-        return transformWord(this.currentWord.gsx$title.$t)
-      }
+      return (
+        this.currentWord.gsx$title &&
+        transformWord(this.currentWord.gsx$title.$t)
+      )
     }
   }
 }

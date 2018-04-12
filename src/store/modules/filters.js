@@ -5,7 +5,7 @@ export default {
 
   getters: {
     filterNames (state, getters, rootState) {
-      const filters = rootState.words.map(word => word.gsx$tags.$t).join(', ')
+      const filters = rootState.appStatus.words.map(word => word.gsx$tags.$t).join(', ')
       return [...new Set(filters.split(', '))]
     },
     activateFilter (state, getters) {

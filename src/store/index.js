@@ -17,17 +17,12 @@ export default new Vuex.Store({
   },
 
   state: {
-    words: [],
     tagsSplitPattern: /\s+|[,|;|.]\s*/
   },
 
   getters: {},
 
-  mutations: {
-    setWords (state, words) {
-      state.words = words
-    }
-  },
+  mutations: {},
 
   actions: {}
 })
