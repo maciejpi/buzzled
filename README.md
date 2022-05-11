@@ -1,3 +1,5 @@
+# This project has been deprecated
+
 # Buzzled: a glossary of buzzwords and jargon used at work.
 
 https://buzzled.netlify.com/
